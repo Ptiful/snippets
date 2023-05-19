@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 df = a
 # returns the first few rows (the “head” of the DataFrame). :
@@ -24,7 +25,7 @@ df.columns
 df.index
 
 # to sort :
-df.sort_values(["",""],[asceding=True, False])
+df.sort_values(["",""], [asceding=True, False])
 
 #subsettings columns:
 df[["",""]]
@@ -36,9 +37,10 @@ df[df["",""] > 50]
 df[df[""]==""]
 
 # Multiple Condition : 
-df[(df[""]=="") & (df[""] ==""])
+df[(df[""]=="") & (df[""] =="")]
 
 # To check if it's in : 
+variable = 2
 df[""].isin[variable]
 
 # To add new column
@@ -96,3 +98,21 @@ df.plot(x="date",y="weight_kg",kind="line",rot=0)
 df[df["sex"]=="F"]["height_cm"].hist(alpha=0.7)
 plt.legend(["F","M"])
 plt.show()
+
+#Missing values
+df.isna().any()
+df.isna().sum().plot(kind="bar")
+df.dropna()
+df.fillna(0)
+
+#Dictionaries in DF
+list_of_dicts =[]
+pd.DataFrame(list_of_dicts)
+
+#pull data from csv
+pd.read_csv("csv file")
+df.to_csv("filepath.csv")
+
+#Inner join
+otherdf = 1
+df.merge(otherdf, on = "column", suffixes=("_ward","_column"), how="left", left_on="", right_on="")
