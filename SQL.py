@@ -1,0 +1,76 @@
+#select somes fields
+SELECT card_num, name
+FROM patrons ;
+
+#select all fields
+SELECT *
+FROM patrons;
+
+#aliasing
+SELECT name AS first_name, year_hired
+FROM employees;
+
+#Distinct with multiple fields - will take unique values
+SELECT DISTINCT dept_id, year_hired
+FROM employees;
+
+#VIEWS
+CREATE VIEW employee_hire_years AS
+SELECT id, name, year_hired
+FROM employees;
+
+#Using views
+SELECT id, name
+FROM employee_hire_years;
+
+#Counts()
+ELECT COUNT(birthdate) AS count_birthdate,
+FROM people;
+SELECT COUNT(birthdate) AS count_birthdate, COUNT(name) as count_names
+FROM people;
+SELECT COUNT(*) AS total_records
+FROM people;
+SELECT COUNT(DISTINCT birthdate) AS count_distinct_birthdates
+FROM people;
+
+#Filtering numbers
+SELECT
+FROM 
+WHERE release_year > 1960
+LIMIT 5;
+#WHERE country = "Japan";
+<> #not equal too
+> # greater than or after
+< #less than or before
+= #equal to
+>= #greater than or equal to
+<= #less than or equal to
+
+#Multiple criteria
+OR, AND, BETWEEN
+WHERE color ='yellow' OR lenght = 'short';
+
+#Filter text
+LIKE, NOT LIKE, IN
+% #match zero, one, or many characters
+WHERE name LIKE 'Ade%'
+_ #match a single character
+WHERE name like 'EV_'
+.%
+WHERE name NOT LIKE 'A.%'
+'%r' #finds all people with name ends with an r
+'__t%' #finds records where the third character is T
+WHERE release_year IN(1930,1940,1950)
+
+#NULL values
+WHERE birthdate IS NULL;
+WHERE birthdate IS NOT NULL;
+
+#Summarizing data
+AVG(), SUM(), MIN(), MAX(), COUNT()
+
+#Summarizing subsets
+ROUND(AVG(budget), -5)
+
+#Arithmetic
++,-,*,/
