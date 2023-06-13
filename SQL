@@ -74,3 +74,26 @@ ROUND(AVG(budget), -5)
 
 #Arithmetic
 +,-,*,/
+
+#Order by
+ORDER BY name ASC, DESC;
+ORDER BY field_one, field_two
+
+#Grouping data
+ORDER BY
+GROUP BY certification
+LIMIT;
+
+#Filtering grouped data
+GROUP BY
+HAVING
+ORDER BY;
+
+#the ins and out of INNER JOIN
+SELECT p1.country, p1.continent, prime_minister, president
+FROM prime_ministers AS p1
+INNER JOIN presidents AS p2
+#USING(country)
+ON p1.country = p2.country;
+
+#Definig relationships
