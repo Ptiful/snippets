@@ -2,7 +2,6 @@
 docker login
 docker build -t app .
 docker run app
-docker compose up
 docker image ls
 docker container ls (docker ps)
 docker image rm
@@ -12,7 +11,17 @@ docker container/image prune --force
 docker tag getting-started YOUR-USER-NAME/getting-started
 docker push YOUR-USER-NAME/getting-started
 
+------------------------------Airflow------------------------------
+
+Create airflow folder
+inside, copy pase docker-compose.yaml from https://github.com/GraphtyLove/airflow_demo_scraper
+then run docker compose up
+localhost:8080
+docker compose down
+
+
 ------------------------------Mongodb------------------------------
+
 sudo systemctl start mongod
 sudo systemctl status mongod
 sudo systemctl stop mongod
