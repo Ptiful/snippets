@@ -10,7 +10,7 @@ DOCKERFILE_PATH="$(pwd)/src/scrapers/Dockerfile"
 
 # Docker Hub username
 # TODO: Change this to your Docker Hub username
-DOCKERHUB_USERNAME="graphtylove"
+DOCKERHUB_USERNAME="paulstrazzulla"
 
 # ------------------------ SCRAPERS IMAGES ------------------------
 echo "-------------------------- SCRAPERS IMAGES --------------------------"
