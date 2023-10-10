@@ -1,0 +1,7 @@
+#------------------------------Airflow------------------------------
+
+Create airflow folder
+inside, copy pase docker-compose.yaml from https://github.com/GraphtyLove/airflow_demo_scraper
+then run docker compose up
+localhost:8080
+docker compose down
