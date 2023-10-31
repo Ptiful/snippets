@@ -1,9 +1,7 @@
-#!/bin/bash
-
 ------------------------------Docker------------------------------
 docker login
-docker build -t app .
-docker run app
+docker build -t app .  (creates image)
+docker run app (create container)
 docker image ls
 docker container ls (docker ps)
 docker image rm

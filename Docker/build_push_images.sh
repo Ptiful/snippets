@@ -1,5 +1,3 @@
-#!/bin/bash
-
 echo "-------------------------- STARTS --------------------------"
 
 # Ensure the user is logged in to Docker Hub

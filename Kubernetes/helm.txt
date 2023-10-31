@@ -1,0 +1,70 @@
+---------------------------AIRFLOW-------------------------
+NAME: my-airflow
+LAST DEPLOYED: Wed Oct 25 15:05:14 2023
+NAMESPACE: airflow
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+Thank you for installing Apache Airflow 2.7.1!
+
+Your release is named my-airflow.
+You can now access your dashboard(s) by executing the following command(s) and visiting the corresponding port at localhost in your browser:
+
+Airflow Webserver:     kubectl port-forward svc/my-airflow-webserver 8080:8080 --namespace default
+Default Webserver (Airflow UI) Login credentials:
+    username: admin
+    password: admin
+Default Postgres connection credentials:
+    username: postgres
+    password: postgres
+    port: 5432
+
+You can get Fernet Key value by running the following:
+
+    echo Fernet Key: $(kubectl get secret --namespace default my-airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
+
+###########################################################
+#  WARNING: You should set a static webserver secret key  #
+###########################################################
+
+You are using a dynamically generated webserver secret key, which can lead to
+unnecessary restarts of your Airflow components.
+
+Information on how to set a static webserver secret key can be found here:
+https://airflow.apache.org/docs/helm-chart/stable/production-guide.html#webserver-secret-key
+
+
+---------------------------MONGODB-------------------------
+NAME: my-mongodb
+LAST DEPLOYED: Tue Oct 31 10:31:12 2023
+NAMESPACE: airflow
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+CHART NAME: mongodb
+CHART VERSION: 14.0.14
+APP VERSION: 7.0.2
+
+** Please be patient while the chart is being deployed **
+
+MongoDB&reg; can be accessed on the following DNS name(s) and ports from within your cluster:
+
+    my-mongodb.airflow.svc.cluster.local
+
+To get the root password run:
+
+    export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace airflow my-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 -d)
+
+To connect to your database, create a MongoDB&reg; client container:
+
+    kubectl run --namespace airflow my-mongodb-client --rm --tty -i --restart='Never' --env="MONGODB_ROOT_PASSWORD=$MONGODB_ROOT_PASSWORD" --image docker.io/bitnami/mongodb:7.0.2-debian-11-r7 --command -- bash
+
+Then, run the following command:
+    mongosh admin --host "my-mongodb" --authenticationDatabase admin -u $MONGODB_ROOT_USER -p $MONGODB_ROOT_PASSWORD
+
+To connect to your database from outside the cluster execute the following commands:
+
+    kubectl port-forward --namespace airflow svc/my-mongodb 27017:27017 &
+    mongosh --host 127.0.0.1 --authenticationDatabase admin -p $MONGODB_ROOT_PASSWORD
